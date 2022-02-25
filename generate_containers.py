@@ -11,7 +11,7 @@ initial_port = 8080
 for user in users_list:
     docker_client.containers.run(
         image = docker_image,
-        name = user,
+        name = '_'.join(user.split(" ")),
         ports = {
             "8080" : initial_port
         },
