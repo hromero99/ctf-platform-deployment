@@ -1,6 +1,6 @@
 FROM kalilinux/kali-rolling:latest
 
-RUN apt-get update && apt-get install -y kali-desktop-xfce tightvncserver dbus dbus-x11 novnc net-tools wireshark
+RUN apt-get update && apt-get install -yq kali-desktop-xfce tightvncserver dbus dbus-x11 novnc net-tools wireshark
 
 ENV USER root
 ENV VNCEXPOSE 1
