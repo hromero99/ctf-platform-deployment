@@ -1,7 +1,7 @@
 FROM kalilinux/kali-rolling:latest
 
+ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get install -yq kali-desktop-xfce tightvncserver dbus dbus-x11 novnc net-tools wireshark
-
 ENV USER root
 ENV VNCEXPOSE 1
 ENV VNCPORT 5900
