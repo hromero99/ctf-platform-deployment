@@ -15,5 +15,5 @@ for user in users_list:
         ports = {
             "8080" : initial_port
         },
-        detached= True
+        detach= True
     )
