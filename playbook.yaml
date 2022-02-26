@@ -1,0 +1,31 @@
+--- 
+
+- name: "Install docker and requisites"
+  hosts: new
+  remote_user: ctf
+  become: true
+  become_user: root
+  become_method: sudo
+  tasks:
+    - name: "Download docker CTFD"
+      docker_image:
+        name: ctfd/ctfd
+        source: pull
+        pull:
+          platform: amd64
+
+    - name: "Dowload docker Mariabd"
+      docker_image:
+        name: mariadb:10.4.12
+        source: pull
+
+    - name: "Download docker nginx"
+      docker_image:
+        name: nginx
+        source: pull
+    - name: "Create containers"
+      import_tasks: "./tasks/containers.yaml"
+    - name: "Upoload nginx"
+      import_tasks: "./tasks/nginx.yaml"
+
+    

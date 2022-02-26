@@ -1,0 +1,11 @@
+---
+
+- name: "Upload ctfd config"
+  copy:
+    src: nginx_sites/default.conf
+    dest: /opt/nginx/sites/default.conf
+
+- name: "Restart nginx container"
+  docker_container:
+    name: nginx
+    restart: yes

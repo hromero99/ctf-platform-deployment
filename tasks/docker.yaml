@@ -1,0 +1,24 @@
+---
+
+- name: Install required system packages
+  apt: name={{ item }} state=latest update_cache=yes
+  loop: [ 'certbot', 'git', 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common', 'python3-pip', 'ufw']
+
+- name: Install Docker Python dependences
+  pip:
+    name: docker
+
+- name: Add Docker GPG apt Key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Add Docker Repository
+  apt_repository:
+    repo: deb https://download.docker.com/linux/ubuntu focal stable
+    state: present
+
+- name: Install Docker CE
+  apt:
+    name: ['docker-ce', 'docker-ce-cli', 'containerd.io']
+    update_cache: yes 
